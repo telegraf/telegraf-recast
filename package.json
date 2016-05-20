@@ -1,0 +1,49 @@
+{
+  "name": "telegraf-recast",
+  "version": "0.1.0",
+  "description": "recast.ai middleware for Telegraf",
+  "main": "lib/telegraf-recast.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/telegraf/telegraf-recast.git"
+  },
+  "keywords": [
+    "telegram",
+    "telegram bot",
+    "telegraf",
+    "bot",
+    "recast",
+    "recast.ai",
+    "natural language",
+    "nlp"
+  ],
+  "author": "Vitaly Domnikov <dotcypress@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/telegraf/telegraf-recast/issues"
+  },
+  "homepage": "https://github.com/telegraf/telegraf-recast#readme",
+  "engines": {
+    "node": ">=4.4.4"
+  },
+  "files": [
+    "lib/telegraf-recast.js"
+  ],
+  "scripts": {
+    "test": "mocha test --require should"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "koa-compose": "^2.4.0",
+    "node-fetch": "^1.5.1"
+  },
+  "peerDependencies": {
+    "telegraf": ">=0.7.0"
+  },
+  "devDependencies": {
+    "bluebird": "^3.3.5",
+    "mocha": "^2.4.5",
+    "should": "^8.3.1",
+    "telegraf": ">=0.7.0"
+  }
+}
