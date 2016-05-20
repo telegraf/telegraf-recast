@@ -1,4 +1,4 @@
-# api.ai middleware for Telegraf
+# recast.ai middleware for Telegraf
 
 [![Build Status](https://img.shields.io/travis/telegraf/telegraf-recast.svg?branch=master&style=flat-square)](https://travis-ci.org/telegraf/telegraf-recast)
 [![NPM Version](https://img.shields.io/npm/v/telegraf-recast.svg?style=flat-square)](https://www.npmjs.com/package/telegraf-recast)
