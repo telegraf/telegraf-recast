@@ -3,7 +3,7 @@
 [![Build Status](https://img.shields.io/travis/telegraf/telegraf-recast.svg?branch=master&style=flat-square)](https://travis-ci.org/telegraf/telegraf-recast)
 [![NPM Version](https://img.shields.io/npm/v/telegraf-recast.svg?style=flat-square)](https://www.npmjs.com/package/telegraf-recast)
 
-[recast.ai](https://recast.ai/) middleware for [Telegraf (Telegram bot framework)](https://github.com/telegraf/telegraf).
+[recast.ai](https://recast.ai/) middleware for [Telegraf](https://github.com/telegraf/telegraf).
 
 ## Installation
 
@@ -14,56 +14,35 @@ $ npm install telegraf-recast
 ## Example
   
 ```js
-var Telegraf = require('telegraf')
-var TelegrafRecast = require('telegraf-recast')
+const Telegraf = require('telegraf')
+const TelegrafAI = require('telegraf-recast')
 
-var app = new Telegraf(process.env.BOT_TOKEN)
-var recast = new TelegrafRecast(process.env.RECASTAI_TOKEN)
+const app = new Telegraf(process.env.BOT_TOKEN)
+const recast = new TelegrafAI(process.env.RECASTAI_TOKEN)
 
 // Add recast.ai middleware
 app.use(recast.middleware())
 
 // Intent handler
-recast.onIntent('termostat', function * () {
-  // Get first room entity
-  var room = this.state.recast.firstEntity('room')
-  if (room) {
-    this.reply(`Temperature in ${room}: 42`)
-  } else {
-    this.reply('What?')
-  }
+recast.on('termostat', (ctx) => {
+  // Some logic
 })
 
 ```
 
-[See also](https://github.com/telegraf/telegraf-recast/tree/master/examples).
-
-## Error Handling
-
-By default TelegrafRecast will print all recast errors to stderr. 
-To perform custom error-handling logic you can set `onError` handler:
-
-```js
-var recast = new TelegrafRecast(process.env.RECASTAI_TOKEN)
-
-recast.onError = function(err){
-  log.error('recast error', err)
-}
-```
+[See working example](https://github.com/telegraf/telegraf-recast/tree/master/examples).
 
 ## API
 
-* `TelegrafRecast`
-  * [`new TelegrafRecast(token)`](#new)
-  * [`.getMeaning(message, outcomes, context)`](#getMeaning)
-  * [`.onIntent(name, fn, [fn, ...])`](#onIntent)
-  * [`.onMessage(fn, [fn, ...])`](#onMessage)
+* `TelegrafAI`
+  * [`new TelegrafAI(token)`](#new)
+  * [`.on(name, fn, [fn, ...])`](#onIntent)
   * [`.middleware()`](#middleware)
  
 <a name="new"></a>
-#### `TelegrafRecast.new(token)`
+#### `TelegrafAI.new(token)`
 
-Initialize new TelegrafRecast.
+Initialize new TelegrafAI.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -72,25 +51,14 @@ Initialize new TelegrafRecast.
 * * *
 
 <a name="onIntent"></a>
-#### `TelegrafRecast.onIntent(name, fn, [fn, ...])`
+#### `TelegrafAI.on(name, fn, [fn, ...])`
 
 Adds intent handlers to app
 
 | Param | Type | Description |
 | ---  | --- | --- |
 | name | `string` | Intent name |
-| fn  | `Promise/Generator Function` | Merge handler |
-
-* * *
-
-<a name="onMessage"></a>
-#### `TelegrafRecast.onMessage(fn, [fn, ...])`
-
-Adds recast message handlers to app
-
-| Param | Type | Description |
-| ---  | --- | --- |
-| fn  | `Promise/Generator Function` | Message handler |
+| fn  | `function` | Intent handler middleware |
 
 * * *
 
@@ -99,14 +67,14 @@ Adds recast message handlers to app
 Telegraf user context props and functions:
 
 ```js
-recast.onXXX(function * (){
-  this.state.recast                     // Current message Recast metadata 
-  this.state.recast.intent              // first intent
-  this.state.recast.sentence            // first sentence
-  this.state.recast.message             // recast message
-  this.state.recast.allEntities(name)   // get all entities with provided name
-  this.state.recast.firstEntity(name)   // get first entity with provided name
-});
+recast.on('intent name', (ctx) => {
+  ctx.state.recast            // Current RecastAI context 
+  ctx.state.recast.intent     // first intent
+  ctx.state.recast.intents    // intents
+  ctx.state.recast.sentence   // first sentence
+  ctx.state.recast.sentences  // sentences
+  ctx.state.recast.raw        // raw recast.ai response
+})
 ```
 
 ## License
