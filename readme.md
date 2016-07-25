@@ -4,6 +4,7 @@
 [![NPM Version](https://img.shields.io/npm/v/telegraf-recast.svg?style=flat-square)](https://www.npmjs.com/package/telegraf-recast)
 
 [recast.ai](https://recast.ai/) middleware for [Telegraf](https://github.com/telegraf/telegraf).
+Easily create Telegram bots with Natural Language Processing.
 
 ## Installation
 
