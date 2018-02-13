@@ -48,13 +48,13 @@ app.use(recast.middleware())
 
 // Intent handler
 recast.on('termostat', (ctx) => {
-  // First sentence
-  const sentence = ctx.state.recast.sentence
+  // Entities
+  const entities = ctx.state.recast.entities
 
   // Get first room / temperature entity
-  const room = sentence.entities.room && sentence.entities.room[0]
-  const temperature = sentence.entities.temperature && sentence.entities.temperature[0]
-  switch (sentence.type) {
+  const room = entities.room && entities.room[0]
+  const temperature = entities.temperature && entities.temperature[0]
+  switch (ctx.state.recast.act) {
     // Handle command
     case 'command':
     case 'assert':
