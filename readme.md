@@ -70,6 +70,7 @@ Telegraf user context props and functions:
 ```js
 recast.on('intent name', (ctx) => {
   ctx.state.recast            // Current RecastAI context 
+  ctx.state.recast.act        // type of text
   ctx.state.recast.intent     // first intent
   ctx.state.recast.intents    // intents
   ctx.state.recast.source     // original text
