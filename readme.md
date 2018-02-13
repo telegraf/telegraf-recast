@@ -72,8 +72,8 @@ recast.on('intent name', (ctx) => {
   ctx.state.recast            // Current RecastAI context 
   ctx.state.recast.intent     // first intent
   ctx.state.recast.intents    // intents
-  ctx.state.recast.sentence   // first sentence
-  ctx.state.recast.sentences  // sentences
+  ctx.state.recast.source     // original text
+  ctx.state.recast.entities   // entities
   ctx.state.recast.raw        // raw recast.ai response
 })
 ```
