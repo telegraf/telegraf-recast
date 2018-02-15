@@ -1,6 +1,6 @@
 {
   "name": "telegraf-recast",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "recast.ai middleware for Telegraf",
   "main": "lib/telegraf-recast.js",
   "repository": {
@@ -31,23 +31,22 @@
     "lib/telegraf-recast.js"
   ],
   "scripts": {
-    "test": "mocha test"
+    "test": "eslint ."
   },
   "dependencies": {
-    "debug": "^2.2.0",
-    "node-fetch": "^1.5.1"
+    "debug": "^3.1.0",
+    "node-fetch": "^2.0.0"
   },
   "peerDependencies": {
     "telegraf": "^2.5.2 || ^3.0.0"
   },
   "devDependencies": {
-    "eslint": "^3.1.1",
-    "eslint-config-standard": "^5.3.1",
-    "eslint-plugin-mocha": "^4.1.0",
-    "eslint-plugin-promise": "^2.0.0",
-    "eslint-plugin-standard": "^2.0.0",
-    "mocha": "^2.4.5",
-    "should": "^10.0.0",
-    "telegraf": "^2.5.2"
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "telegraf": "^3.18.0"
   }
 }
