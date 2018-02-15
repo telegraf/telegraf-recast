@@ -1,6 +1,6 @@
 {
   "name": "telegraf-recast",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "recast.ai middleware for Telegraf",
   "main": "lib/telegraf-recast.js",
   "repository": {
